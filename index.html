@@ -15,16 +15,13 @@
           padding:18px; box-shadow:0 8px 30px rgba(2,6,23,0.6);
           border:1px solid rgba(255,255,255,0.03);}
     header{margin-bottom:12px;}
-    h1{font-size:18px;margin:0;}
-    p.lead{margin:0;color:var(--muted); font-size:13px;}
+    h1{margin:0;}
+    p.lead{margin:0;color:var(--muted);}
     .grid{display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:12px;}
-    @media (max-width: 768px) {
-    .grid {
-        grid-template-columns: 1fr;}}
     textarea{width:100%; height:240px; padding:12px; resize:vertical; min-height:140px;
              background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1);
-             color:var(--text); border-radius:8px; font-size:13px; line-height:1.5; margin-top: 8px;}
-    .controls{display:flex; flex-direction:column; gap:10px;}
+             color:var(--text); border-radius:8px; line-height:1.5; margin-top: 8px;}
+    .controls{display:flex; flex-direction:column; gap:10px; max-width: 100%;}
     input[type="text"]{padding:8px 10px; border-radius:8px;
                        border:1px solid rgba(255,255,255,0.1); background:transparent;
                        color:var(--text);}
@@ -45,12 +42,24 @@
     .dropdown-item input{pointer-events:none;}
     .dropdown-item:hover{background:#1a2235;}
     .dropdown-item.selected{background: #00175db3; color:#04ff09; font-weight:600;}
+    .lead{font-size:13px;}
+    .head1{font-size:18px}
+    @media (max-width: 720px) {
+    .wrap {
+        width: 100%;
+        max-width: 720px;}
+    .lead{font-size:10px;}
+    .head1{font-size:12px}
+    button{font-size:10px;}
+    input{font-size:10px;}
+    .dropdown{font-size:10px;}
+    .grid{grid-template-columns: 1fr;}}
   </style>
 </head>
 <body>
   <div class="wrap">
     <header>
-      <h1>تبدیل متن (هر کاراکتر به کاراکتر دیگر)</h1>
+      <h1 class="head1">تبدیل متن (هر کاراکتر به کاراکتر دیگر)</h1>
       <p class="lead"> (<code>\n</code>) <code>--></code> "_"</p>
     </header>
 
@@ -58,7 +67,7 @@
         <!-- ورودی -->
         <div>
             <label for="inputText">متن ورودی</label>
-            <textarea id="inputText" placeholder="متن خود را اینجا بچسبانید..."></textarea>
+            <textarea class="lead" id="inputText" placeholder="متن خود را اینجا بچسبانید..."></textarea>
             <div style="display:flex;gap:8px;margin-top:8px;">
             <button id="pasteBtn" class="secondary small">چسباندن</button>
             <button id="clearBtn" class="secondary small">پاک کردن</button>
@@ -68,11 +77,11 @@
         <!-- کنترل‌ها -->
         <div class="controls">
             <!-- انتخاب target و replacement -->
-            <div style="display:flex; gap:8px; align-items:center;">
+            <div class="lead" style="display:flex; gap:8px; align-items:center;">
             <label for="target">جایگزین کن:</label>
             <input id="target" type="text" value="\n" style="flex:1"
                     title="متن یا کاراکتر اصلی (\\n برای اینتر)" />
-            <span style="font-size:13px; color:#9aa6b2;">→</span>
+            <span class="lead" style="color:#9aa6b2;">→</span>
             <input id="replacement" type="text" value="_" style="flex:1"
                     title="متن یا کاراکتر جایگزین" />
             </div>
@@ -107,7 +116,7 @@
 
             <div>
                 <label for="outputText">نتیجه</label>
-                <textarea id="outputText"></textarea>
+                <textarea class="lead" id="outputText"></textarea>
             </div>
         </div>
     </div>
